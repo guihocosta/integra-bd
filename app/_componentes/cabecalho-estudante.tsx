@@ -1,9 +1,8 @@
-import { servicoAtividades } from "@/infrastructure/container";
-import { estudanteAtual } from "../_lib/sessao";
+import { sessao } from "../_lib/sessao";
 import { SeletorEstudante } from "./seletor-estudante";
 
 export async function CabecalhoEstudante() {
-  const [atual, estudantes] = await Promise.all([estudanteAtual(), servicoAtividades.listarEstudantes()]);
+  const { atual, estudantes } = await sessao();
 
   return (
     <>
