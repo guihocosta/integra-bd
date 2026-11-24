@@ -43,3 +43,6 @@ next-env.d.ts
 comprovantes-locais/
 
 .vercel
+
+# certificados (CA do Aiven)
+*.pem
