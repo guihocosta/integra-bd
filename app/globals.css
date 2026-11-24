@@ -1,26 +1,20 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Paleta dos protótipos (seção 4 do documento de BD). */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-manrope);
+  --color-fundo: #f4f6f5;
+  --color-borda: #e4e9e6;
+  --color-texto: #1d2420;
+  --color-suave: #6b7570;
+  --color-marca: #0d6b45;
+  --color-marca-escura: #0a5636;
+  --color-marca-clara: #e8f4ed;
+  --color-alerta: #b42318;
+  --color-alerta-claro: #fdf0ef;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-fundo);
+  color: var(--color-texto);
 }

@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: integra-postgres
+    environment:
+      POSTGRES_DB: integra
+      POSTGRES_USER: integra
+      POSTGRES_PASSWORD: integra
+    ports:
+      - "5432:5432"
+    volumes:
+      # os scripts rodam em ordem alfabética só na primeira subida (volume vazio)
+      - ./db:/docker-entrypoint-initdb.d:ro
+      - integra-dados:/var/lib/postgresql/data
+
+volumes:
+  integra-dados:
