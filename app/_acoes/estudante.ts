@@ -2,7 +2,7 @@
 
 import { refresh } from "next/cache";
 import { cookies } from "next/headers";
-import { servicoAtividades } from "@/infra/container";
+import { servicoAtividades } from "@/infrastructure/container";
 import { COOKIE_ESTUDANTE } from "../_lib/sessao";
 
 export async function selecionarEstudante(matricula: string) {

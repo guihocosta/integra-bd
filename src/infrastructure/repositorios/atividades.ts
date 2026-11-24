@@ -1,8 +1,8 @@
 import { and, asc, desc, eq, ne, sql } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
-import type { NovaAtividade, RepositorioAtividades } from "@/aplicacao/portas";
-import type { Atividade, Comprovante, StatusAtividade, TipoDeAtividade } from "@/dominio/modelos";
-import type { DadosAtividade } from "@/dominio/regras";
+import type { NovaAtividade, RepositorioAtividades } from "@/application/portas";
+import type { Atividade, Comprovante, StatusAtividade, TipoDeAtividade } from "@/domain/modelos";
+import type { DadosAtividade } from "@/domain/regras";
 import type { Banco } from "../banco/conexao";
 import { atividade, avaliacao, comprovante, eixo, tipoDeAtividade } from "../banco/esquema";
 

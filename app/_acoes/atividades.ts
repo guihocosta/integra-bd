@@ -2,10 +2,10 @@
 
 import { refresh } from "next/cache";
 import { redirect } from "next/navigation";
-import type { ArquivoEnviado } from "@/aplicacao/servico-atividades";
-import { NaoEncontradoError, RegraVioladaError } from "@/dominio/erros";
-import type { DadosAtividade } from "@/dominio/regras";
-import { servicoAtividades } from "@/infra/container";
+import type { ArquivoEnviado } from "@/application/servico-atividades";
+import { NaoEncontradoError, RegraVioladaError } from "@/domain/erros";
+import type { DadosAtividade } from "@/domain/regras";
+import { servicoAtividades } from "@/infrastructure/container";
 import type { EstadoFormulario } from "../_lib/formulario";
 import { estudanteAtual } from "../_lib/sessao";
 

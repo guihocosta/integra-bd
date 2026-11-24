@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { ROTULO_STATUS, type StatusAtividade } from "@/dominio/modelos";
-import { pontosDaAtividade, tipoEfetivo } from "@/dominio/regras";
-import { servicoAtividades } from "@/infra/container";
+import { ROTULO_STATUS, type StatusAtividade } from "@/domain/modelos";
+import { pontosDaAtividade, tipoEfetivo } from "@/domain/regras";
+import { servicoAtividades } from "@/infrastructure/container";
 import { BotaoNovaAtividade } from "../_componentes/botoes-atividade";
 import { IconeFiltro } from "../_componentes/icones";
 import { SeloStatus } from "../_componentes/selo-status";

@@ -1,4 +1,4 @@
-import { servicoAtividades } from "@/infra/container";
+import { servicoAtividades } from "@/infrastructure/container";
 import { estudanteAtual } from "../_lib/sessao";
 import { SeletorEstudante } from "./seletor-estudante";
 

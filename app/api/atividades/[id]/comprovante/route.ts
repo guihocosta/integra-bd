@@ -1,5 +1,5 @@
-import { NaoEncontradoError } from "@/dominio/erros";
-import { servicoAtividades } from "@/infra/container";
+import { NaoEncontradoError } from "@/domain/erros";
+import { servicoAtividades } from "@/infrastructure/container";
 import { estudanteAtual } from "../../../../_lib/sessao";
 
 /** Entrega o arquivo do comprovante, só para o estudante dono da atividade. */

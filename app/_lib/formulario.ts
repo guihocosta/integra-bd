@@ -1,4 +1,4 @@
-import type { ErrosPorCampo } from "@/dominio/regras";
+import type { ErrosPorCampo } from "@/domain/regras";
 
 /** O que a action devolve ao formulário de atividade. */
 export interface EstadoFormulario {

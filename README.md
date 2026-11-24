@@ -23,15 +23,15 @@ Ainda não há login (RF01): o estudante é escolhido no canto superior direito.
 
 ```
 app/                  Apresentação: páginas, componentes, Server Actions e a rota do comprovante
-src/aplicacao/        Aplicação: casos de uso (ServicoAtividades) e as portas (interfaces) que eles usam
-src/dominio/          Domínio: entidades e regras de negócio, em funções puras
-src/infra/            Infraestrutura: Drizzle/PostgreSQL, Blob/disco e a raiz de composição (container.ts)
+src/application/      Aplicação: casos de uso (ServicoAtividades) e as portas (interfaces) que eles usam
+src/domain/           Domínio: entidades e regras de negócio, em funções puras
+src/infrastructure/   Infraestrutura: Drizzle/PostgreSQL, Blob/disco e a raiz de composição (container.ts)
 db/                   Scripts do banco: 01-esquema.sql (criação) e 02-carga.sql (carga inicial)
 ```
 
-As dependências só descem: `app` → `aplicacao` → `dominio`. A `infra` implementa as portas de `aplicacao/portas.ts`, e `infra/container.ts` é o único lugar que liga cada porta à sua implementação. Trocar o banco ou o armazenamento não mexe no serviço nem nas regras. As regras do domínio também rodam no navegador: a estimativa do formulário usa as mesmas funções que o servidor usa para validar.
+As dependências só descem: `app` → `application` → `domain`. A `infrastructure` implementa as portas de `application/portas.ts`, e `infrastructure/container.ts` é o único lugar que liga cada porta à sua implementação. Trocar o banco ou o armazenamento não mexe no serviço nem nas regras. As regras do domínio também rodam no navegador: a estimativa do formulário usa as mesmas funções que o servidor usa para validar.
 
-Para crescer: um novo caso de uso (por exemplo, UC04 Solicitar Avaliação) ganha um serviço em `src/aplicacao`, as regras em `src/dominio`, os métodos de repositório em `src/infra` e as telas em `app/`.
+Para crescer: um novo caso de uso (por exemplo, UC04 Solicitar Avaliação) ganha um serviço em `src/application`, as regras em `src/domain`, os métodos de repositório em `src/infrastructure` e as telas em `app/`.
 
 ## Como rodar localmente
 

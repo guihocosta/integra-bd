@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState, useTransition } from "react";
-import type { TipoDeAtividade } from "@/dominio/modelos";
+import type { TipoDeAtividade } from "@/domain/modelos";
 import { excluirAtividade } from "../_acoes/atividades";
 import { FormularioAtividade, type ValoresAtividade } from "./formulario-atividade";
 import { IconeMais } from "./icones";

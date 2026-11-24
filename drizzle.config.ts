@@ -4,7 +4,7 @@ import { defineConfig } from "drizzle-kit";
 // O esquema oficial é o de db/01-esquema.sql.
 export default defineConfig({
   dialect: "postgresql",
-  schema: "./src/infra/banco/esquema.ts",
+  schema: "./src/infrastructure/banco/esquema.ts",
   out: "./drizzle",
   dbCredentials: { url: process.env.DATABASE_URL ?? "postgres://integra:integra@localhost:5432/integra" },
 });

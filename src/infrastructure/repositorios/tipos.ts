@@ -1,6 +1,6 @@
 import { asc, eq } from "drizzle-orm";
-import type { RepositorioTipos } from "@/aplicacao/portas";
-import type { TipoDeAtividade } from "@/dominio/modelos";
+import type { RepositorioTipos } from "@/application/portas";
+import type { TipoDeAtividade } from "@/domain/modelos";
 import type { Banco } from "../banco/conexao";
 import { eixo, tipoDeAtividade } from "../banco/esquema";
 

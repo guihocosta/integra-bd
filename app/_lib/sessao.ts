@@ -1,7 +1,7 @@
 import "server-only";
 import { cookies } from "next/headers";
-import type { Estudante } from "@/dominio/modelos";
-import { servicoAtividades } from "@/infra/container";
+import type { Estudante } from "@/domain/modelos";
+import { servicoAtividades } from "@/infrastructure/container";
 
 export const COOKIE_ESTUDANTE = "integra_estudante";
 

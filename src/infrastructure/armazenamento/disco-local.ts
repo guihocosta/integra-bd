@@ -2,7 +2,7 @@ import { createReadStream } from "node:fs";
 import { mkdir, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { Readable } from "node:stream";
-import type { ArmazemComprovantes, ArquivoAberto } from "@/aplicacao/portas";
+import type { ArmazemComprovantes, ArquivoAberto } from "@/application/portas";
 
 const TIPOS: Record<string, string> = {
   ".pdf": "application/pdf",

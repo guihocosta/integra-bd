@@ -1,4 +1,4 @@
-import { ROTULO_STATUS, type StatusAtividade } from "@/dominio/modelos";
+import { ROTULO_STATUS, type StatusAtividade } from "@/domain/modelos";
 
 const CORES: Record<StatusAtividade, string> = {
   CADASTRADA: "bg-slate-100 text-slate-600",

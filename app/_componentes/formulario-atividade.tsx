@@ -1,8 +1,8 @@
 "use client";
 
 import { startTransition, useActionState, useEffect, useMemo, useState } from "react";
-import type { TipoDeAtividade } from "@/dominio/modelos";
-import { estimar, FORMATOS_COMPROVANTE, validarArquivoComprovante } from "@/dominio/regras";
+import type { TipoDeAtividade } from "@/domain/modelos";
+import { estimar, FORMATOS_COMPROVANTE, validarArquivoComprovante } from "@/domain/regras";
 import { salvarAtividade } from "../_acoes/atividades";
 import { ESTADO_INICIAL } from "../_lib/formulario";
 import { IconeArquivo, IconeFechar } from "./icones";

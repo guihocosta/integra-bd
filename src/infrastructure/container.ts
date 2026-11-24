@@ -1,6 +1,6 @@
 import "server-only";
 import path from "node:path";
-import { ServicoAtividades } from "@/aplicacao/servico-atividades";
+import { ServicoAtividades } from "@/application/servico-atividades";
 import { ArmazemBlob } from "./armazenamento/blob";
 import { ArmazemDiscoLocal } from "./armazenamento/disco-local";
 import { banco } from "./banco/conexao";

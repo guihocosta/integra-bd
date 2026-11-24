@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { NaoEncontradoError } from "@/dominio/erros";
-import { podeSerModificada, pontosDaAtividade, quantidadeEfetiva, tipoEfetivo } from "@/dominio/regras";
-import { servicoAtividades } from "@/infra/container";
+import { NaoEncontradoError } from "@/domain/erros";
+import { podeSerModificada, pontosDaAtividade, quantidadeEfetiva, tipoEfetivo } from "@/domain/regras";
+import { servicoAtividades } from "@/infrastructure/container";
 import { AcoesAtividade } from "../../_componentes/botoes-atividade";
 import { SeloStatus } from "../../_componentes/selo-status";
 import { estudanteAtual } from "../../_lib/sessao";

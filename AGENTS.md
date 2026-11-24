@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Programa do trabalho de BD do Integra (ver README). Regras obrigatórias:
 
-- Arquitetura em camadas, com dependência só para baixo: `app/` (apresentação) → `src/aplicacao` (casos de uso e portas) → `src/dominio` (regras puras). `src/infra` implementa as portas; só `src/infra/container.ts` instancia implementações.
-- O esquema oficial é `db/01-esquema.sql`; `src/infra/banco/esquema.ts` só espelha (gerado com `npx drizzle-kit pull`). Não usar migrations do Drizzle.
+- Arquitetura em camadas, com dependência só para baixo: `app/` (apresentação) → `src/application` (casos de uso e portas) → `src/domain` (regras puras). `src/infrastructure` implementa as portas; só `src/infrastructure/container.ts` instancia implementações.
+- O esquema oficial é `db/01-esquema.sql`; `src/infrastructure/banco/esquema.ts` só espelha (gerado com `npx drizzle-kit pull`). Não usar migrations do Drizzle.
 - Telas seguem os protótipos da seção 4 do documento de BD; regras citam o ID (RN03, RN05…) nos comentários e mensagens.
 - Código e textos em português.

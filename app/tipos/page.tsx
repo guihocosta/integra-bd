@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { servicoAtividades } from "@/infra/container";
+import { servicoAtividades } from "@/infrastructure/container";
 import { estudanteAtual } from "../_lib/sessao";
 
 export const metadata = { title: "Tipos de atividade · Integra" };

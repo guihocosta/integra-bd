@@ -1,5 +1,5 @@
 import { del, get, put } from "@vercel/blob";
-import type { ArmazemComprovantes, ArquivoAberto } from "@/aplicacao/portas";
+import type { ArmazemComprovantes, ArquivoAberto } from "@/application/portas";
 
 /** Comprovantes no Vercel Blob, com acesso privado: só o servidor lê, com o token. */
 export class ArmazemBlob implements ArmazemComprovantes {

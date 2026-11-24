@@ -1,8 +1,8 @@
 // Contratos que a camada de aplicação espera da infraestrutura.
-// O serviço depende só destas interfaces; as implementações ficam em src/infra.
+// O serviço depende só destas interfaces; as implementações ficam em src/infrastructure.
 
-import type { Atividade, Comprovante, Estudante, TipoDeAtividade } from "@/dominio/modelos";
-import type { DadosAtividade } from "@/dominio/regras";
+import type { Atividade, Comprovante, Estudante, TipoDeAtividade } from "@/domain/modelos";
+import type { DadosAtividade } from "@/domain/regras";
 
 export interface RepositorioEstudantes {
   listar(): Promise<Estudante[]>;

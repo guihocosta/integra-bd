@@ -1,6 +1,6 @@
 import { asc, eq } from "drizzle-orm";
-import type { RepositorioEstudantes } from "@/aplicacao/portas";
-import type { Estudante } from "@/dominio/modelos";
+import type { RepositorioEstudantes } from "@/application/portas";
+import type { Estudante } from "@/domain/modelos";
 import type { Banco } from "../banco/conexao";
 import { estudante, ppc } from "../banco/esquema";
 

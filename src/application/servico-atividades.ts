@@ -1,8 +1,8 @@
 // Casos de uso do UC01 (Gerenciar Atividades): listar, incluir, consultar, alterar e excluir.
 // Orquestra as regras do domínio e as portas; não sabe qual banco nem qual armazenamento está por trás.
 
-import { NaoEncontradoError, RegraVioladaError } from "@/dominio/erros";
-import type { Atividade, Comprovante, Estudante, TipoDeAtividade } from "@/dominio/modelos";
+import { NaoEncontradoError, RegraVioladaError } from "@/domain/erros";
+import type { Atividade, Comprovante, Estudante, TipoDeAtividade } from "@/domain/modelos";
 import {
   extensaoDoArquivo,
   podeSerModificada,
@@ -10,7 +10,7 @@ import {
   validarDadosAtividade,
   type DadosAtividade,
   type ErrosPorCampo,
-} from "@/dominio/regras";
+} from "@/domain/regras";
 import type {
   ArmazemComprovantes,
   ArquivoAberto,
