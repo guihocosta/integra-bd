@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Navegacao, NavegacaoAtual } from "./navegacao";
 
+/** Barra lateral do computador e do tablet; no celular, a navegação vai para a barra inferior. */
 export function BarraLateral() {
   return (
-    <aside className="sticky top-0 flex h-screen w-56 shrink-0 flex-col border-r border-borda bg-white px-3 py-5">
+    <aside className="sticky top-0 hidden h-screen w-56 shrink-0 flex-col border-r border-borda bg-white px-3 py-5 md:flex">
       <Link href="/atividades" className="mb-6 flex items-center gap-2.5 px-2">
         <Logo />
         <div className="leading-tight">
@@ -28,11 +29,32 @@ export function BarraLateral() {
   );
 }
 
-function Logo() {
+/** Navegação fixa no rodapé da tela, só no celular. */
+export function BarraInferior() {
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-borda bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
+      <Suspense fallback={<Navegacao caminho="" inferior />}>
+        <NavegacaoAtual inferior />
+      </Suspense>
+    </div>
+  );
+}
+
+/** Logotipo reduzido no cabeçalho do celular. */
+export function LogoCompacto() {
+  return (
+    <Link href="/atividades" aria-label="Integra" className="flex shrink-0 items-center gap-2 md:hidden">
+      <Logo pequeno />
+      <span className="text-[15px] font-bold text-marca">Integra</span>
+    </Link>
+  );
+}
+
+function Logo({ pequeno = false }: { pequeno?: boolean }) {
   // Grade de quadrados do logotipo do Ifes, com o primeiro em vermelho.
   const celulas = [0, 1, 2, 3, 4, 6, 7, 8, 9, 10];
   return (
-    <svg width="30" height="40" viewBox="0 0 30 40" aria-hidden>
+    <svg width={pequeno ? 18 : 30} height={pequeno ? 24 : 40} viewBox="0 0 30 40" aria-hidden>
       {celulas.map((c) => (
         <rect
           key={c}

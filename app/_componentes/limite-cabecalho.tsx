@@ -16,8 +16,8 @@ function AvisoCabecalho({ retry }: { retry: () => void }) {
   }, [retry]);
 
   return (
-    <div className="flex w-full items-center justify-between text-[13px]">
-      <span className="font-semibold">Bacharelado em Sistemas de Informação · Campus Serra</span>
+    <div className="flex min-w-0 flex-1 items-center justify-end text-[13px] md:justify-between">
+      <span className="hidden font-semibold md:inline">Bacharelado em Sistemas de Informação · Campus Serra</span>
       <button type="button" onClick={() => retry()} className="flex items-center gap-2 text-xs text-suave hover:text-texto">
         <span className="h-2 w-2 animate-pulse rounded-full bg-amber-500" /> Reconectando…
       </button>

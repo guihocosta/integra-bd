@@ -105,7 +105,7 @@ export class ServicoAtividades {
     // RN05 (E02, fluxo 6a): o comprovante não pode estar em outra atividade que não foi rejeitada.
     if (await this.atividades.hashEmUso(hash))
       throw new RegraVioladaError("Este comprovante já foi usado em outra atividade.", {
-        comprovante: "Este comprovante já foi usado em outra atividade (RN05).",
+        comprovante: "Este comprovante já foi usado em outra atividade.",
       });
 
     const hoje = this.hoje();
@@ -129,7 +129,7 @@ export class ServicoAtividades {
     const atual = await this.consultar(matricula, id);
     // E03, fluxo 1a (RN10).
     if (!podeSerModificada(atual))
-      throw new RegraVioladaError("A atividade já foi enviada para avaliação e não pode mais ser alterada (RN10).");
+      throw new RegraVioladaError("A atividade já foi enviada para avaliação e não pode mais ser alterada.");
 
     const estudante = await this.buscarEstudante(matricula);
     const erros = await this.validar(estudante, dados);
@@ -144,7 +144,7 @@ export class ServicoAtividades {
       const hash = await calcularHash(arquivo.conteudo);
       if (await this.atividades.hashEmUso(hash, id))
         throw new RegraVioladaError("Este comprovante já foi usado em outra atividade.", {
-          comprovante: "Este comprovante já foi usado em outra atividade (RN05).",
+          comprovante: "Este comprovante já foi usado em outra atividade.",
         });
       novo = await this.gravarArquivo(id, arquivo, hash, this.hoje());
     }
@@ -167,7 +167,7 @@ export class ServicoAtividades {
     const atual = await this.consultar(matricula, id);
     // E05, fluxo 1a (RN10).
     if (!podeSerModificada(atual))
-      throw new RegraVioladaError("A atividade já foi enviada para avaliação e não pode ser excluída (RN10).");
+      throw new RegraVioladaError("A atividade já foi enviada para avaliação e não pode ser excluída.");
     await this.atividades.excluir(id);
     if (atual.comprovante) await this.armazem.remover(atual.comprovante.pathArquivo).catch(() => {});
   }

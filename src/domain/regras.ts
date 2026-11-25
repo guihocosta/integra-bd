@@ -92,7 +92,7 @@ export function validarDadosAtividade(
   if (!dados.dataInicio) erros.dataInicio = "Informe a data de início.";
   // RN04: não pontuam atividades realizadas antes do ingresso no curso.
   else if (dados.dataInicio < estudante.dataIngresso)
-    erros.dataInicio = "A atividade começou antes do seu ingresso no curso e não pontua (RN04).";
+    erros.dataInicio = "A atividade começou antes do seu ingresso no curso e não pontua.";
 
   if (!dados.dataFim) erros.dataFim = "Informe a data de término.";
   else if (dados.dataInicio && dados.dataFim < dados.dataInicio)
@@ -103,7 +103,7 @@ export function validarDadosAtividade(
 
   // RN06: o estudante declara que a atividade não foi usada no estágio obrigatório nem na extensão.
   if (!dados.declarouNaoUso)
-    erros.declarouNaoUso = "Sem a declaração a atividade não pode ser registrada (RN06).";
+    erros.declarouNaoUso = "Sem a declaração a atividade não pode ser registrada.";
 
   return erros;
 }

@@ -50,7 +50,7 @@ export function FormularioAtividade({ tipos, pontosPorEixo, atividade, aoFechar 
   const erros = estado.erros ?? {};
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-12">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 sm:px-4 sm:py-12">
       <form
         onSubmit={(e) => {
           // Envia sem o reset automático do <form action>, para não perder o que foi digitado quando há erro.
@@ -58,14 +58,14 @@ export function FormularioAtividade({ tipos, pontosPorEixo, atividade, aoFechar 
           const dados = new FormData(e.currentTarget);
           startTransition(() => enviar(dados));
         }}
-        className="w-full max-w-lg rounded-2xl bg-white p-7 shadow-xl"
+        className="min-h-full w-full max-w-lg bg-white p-5 shadow-xl sm:min-h-0 sm:rounded-2xl sm:p-7"
       >
-        <div className="mb-5 flex items-start justify-between">
+        <div className="mb-5 flex items-start justify-between gap-3">
           <div>
             <h2 className="text-xl font-bold">{atividade ? "Alterar atividade" : "Nova atividade"}</h2>
             <p className="text-xs text-suave">Os pontos são calculados pela unidade definida no PPC.</p>
           </div>
-          <button type="button" onClick={aoFechar} aria-label="Fechar" className="text-suave hover:text-texto">
+          <button type="button" onClick={aoFechar} aria-label="Fechar" className="-m-2 p-2 text-suave hover:text-texto">
             <IconeFechar />
           </button>
         </div>
@@ -98,7 +98,7 @@ export function FormularioAtividade({ tipos, pontosPorEixo, atividade, aoFechar 
 
         {tipo && estimativa && (
           <div className="mb-4 rounded-xl bg-marca-clara px-4 py-3">
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <Info rotulo="Unidade" valor={tipo.unidade} />
               <Info rotulo="Valor unitário" valor={`${tipo.pontosPorUnidade} ${plural(tipo.pontosPorUnidade, "ponto")}`} />
               <Info rotulo="Estimativa" valor={`${estimativa.pontosAtividade} ${plural(estimativa.pontosAtividade, "ponto")}`} />
@@ -114,7 +114,7 @@ export function FormularioAtividade({ tipos, pontosPorEixo, atividade, aoFechar 
           </div>
         )}
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-x-3 sm:grid-cols-2">
           <Campo rotulo="Data de início" erro={erros.dataInicio}>
             <input type="date" name="dataInicio" defaultValue={atividade?.dataInicio} className={entrada(erros.dataInicio)} />
           </Campo>
@@ -146,11 +146,13 @@ export function FormularioAtividade({ tipos, pontosPorEixo, atividade, aoFechar 
             }`}
           >
             <IconeArquivo />
-            {arquivo
-              ? arquivo.name
-              : atividade?.nomeComprovante
-                ? `${atividade.nomeComprovante} (clique para trocar)`
-                : "Anexar comprovante em PDF"}
+            <span className="min-w-0 break-all">
+              {arquivo
+                ? arquivo.name
+                : atividade?.nomeComprovante
+                  ? `${atividade.nomeComprovante} (toque para trocar)`
+                  : "Anexar comprovante em PDF"}
+            </span>
             <input
               type="file"
               name="comprovante"
@@ -184,7 +186,7 @@ export function FormularioAtividade({ tipos, pontosPorEixo, atividade, aoFechar 
           </p>
         )}
 
-        <div className="flex justify-end gap-2">
+        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <button type="button" onClick={aoFechar} className="rounded-lg border border-borda px-4 py-2.5 text-[13px] hover:bg-fundo">
             Cancelar
           </button>
@@ -219,13 +221,13 @@ function Info({ rotulo, valor }: { rotulo: string; valor: string }) {
   return (
     <div>
       <div className="text-[9px] font-bold tracking-wider text-marca uppercase">{rotulo}</div>
-      <div className="text-[13px] font-semibold">{valor}</div>
+      <div className="text-[13px] font-semibold break-words">{valor}</div>
     </div>
   );
 }
 
 function entrada(erro?: string | null) {
-  return `w-full rounded-lg border bg-white px-3 py-2.5 text-[13px] outline-none focus:border-marca focus:ring-2 focus:ring-marca/15 ${
+  return `w-full min-w-0 rounded-lg border bg-white px-3 py-2.5 text-base outline-none sm:text-[13px] focus:border-marca focus:ring-2 focus:ring-marca/15 ${
     erro ? "border-alerta" : "border-borda"
   }`;
 }

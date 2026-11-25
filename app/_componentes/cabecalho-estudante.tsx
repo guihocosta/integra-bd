@@ -6,7 +6,7 @@ export async function CabecalhoEstudante() {
 
   return (
     <>
-      <div className="leading-tight">
+      <div className="hidden leading-tight md:block">
         <div className="text-[10px] font-medium tracking-wider text-suave uppercase">
           Bacharelado em Sistemas de Informação
         </div>

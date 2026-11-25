@@ -24,10 +24,10 @@ async function Conteudo({ filtros }: { filtros: PageProps<"/tipos">["searchParam
   return (
     <>
       <p className="text-xs font-semibold text-marca">PPC {estudante.ppc.semestreAtivo}</p>
-      <h1 className="text-[26px] font-bold">Tipos de atividade aceitos</h1>
+      <h1 className="text-[22px] font-bold md:text-[26px]">Tipos de atividade aceitos</h1>
       <p className="mb-5 text-xs text-suave">Tabela oficial de pontuação do Bacharelado em Sistemas de Informação.</p>
 
-      <nav className="mb-4 flex flex-wrap gap-2">
+      <nav className="-mx-4 mb-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0 md:pb-0">
         <Aba href="/tipos" ativa={!eixo}>
           Todos
         </Aba>
@@ -38,7 +38,26 @@ async function Conteudo({ filtros }: { filtros: PageProps<"/tipos">["searchParam
         ))}
       </nav>
 
-      <section className="overflow-hidden rounded-2xl border border-borda bg-white">
+      {/* No celular, cada tipo vira um cartão; a tabela aparece a partir do tablet. */}
+      <ul className="flex flex-col gap-2 md:hidden">
+        {visiveis.map((t) => (
+          <li key={t.id} className={`rounded-xl border border-borda bg-white p-4 ${t.ativo ? "" : "text-suave"}`}>
+            <div className="flex items-start justify-between gap-3">
+              <span className="text-xs font-semibold text-marca">{t.id}</span>
+              <span className="shrink-0 text-[13px] font-semibold">
+                {t.pontosPorUnidade} {t.pontosPorUnidade === 1 ? "pt" : "pts"}
+              </span>
+            </div>
+            <p className="mt-1 text-[13px] font-medium">{t.descricao}</p>
+            <p className="mt-1 text-[11px] text-suave">
+              {t.eixo.descricao} · {t.unidade}
+            </p>
+            <Marcadores exigeRelacaoCurso={t.exigeRelacaoCurso} ativo={t.ativo} />
+          </li>
+        ))}
+      </ul>
+
+      <section className="hidden overflow-hidden rounded-2xl border border-borda bg-white md:block">
         <table className="w-full text-left text-[13px]">
           <thead className="bg-fundo/60 text-[10px] font-semibold tracking-wider text-suave uppercase">
             <tr>
@@ -55,12 +74,7 @@ async function Conteudo({ filtros }: { filtros: PageProps<"/tipos">["searchParam
                 <td className="px-5 py-3.5 font-semibold text-marca">{t.id}</td>
                 <td className="px-3 py-3.5">
                   {t.descricao}
-                  {t.exigeRelacaoCurso && (
-                    <span className="ml-2 rounded bg-marca-clara px-1.5 py-0.5 text-[9px] font-semibold text-marca">
-                      exige relação com o curso
-                    </span>
-                  )}
-                  {!t.ativo && <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-semibold">inativo</span>}
+                  <Marcadores exigeRelacaoCurso={t.exigeRelacaoCurso} ativo={t.ativo} />
                 </td>
                 <td className="px-3 py-3.5">{t.eixo.descricao}</td>
                 <td className="px-3 py-3.5">{t.unidade}</td>
@@ -71,10 +85,22 @@ async function Conteudo({ filtros }: { filtros: PageProps<"/tipos">["searchParam
         </table>
       </section>
       <p className="mt-3 text-[11px] text-suave">
-        Cada eixo conta no máximo {eixos[0]?.[1].limitePontos ?? 10} pontos (RN02); o total exigido é{" "}
-        {estudante.ppc.pontosMinimos} pontos (RN01).
+        Cada eixo conta no máximo {eixos[0]?.[1].limitePontos ?? 10} pontos; o total exigido é{" "}
+        {estudante.ppc.pontosMinimos} pontos.
       </p>
     </>
+  );
+}
+
+function Marcadores({ exigeRelacaoCurso, ativo }: { exigeRelacaoCurso: boolean; ativo: boolean }) {
+  if (!exigeRelacaoCurso && ativo) return null;
+  return (
+    <span className="mt-1 inline-flex flex-wrap gap-1 md:mt-0 md:ml-2">
+      {exigeRelacaoCurso && (
+        <span className="rounded bg-marca-clara px-1.5 py-0.5 text-[9px] font-semibold text-marca">exige relação com o curso</span>
+      )}
+      {!ativo && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-semibold">inativo</span>}
+    </span>
   );
 }
 
@@ -82,7 +108,7 @@ function Aba({ href, ativa, children }: { href: string; ativa: boolean; children
   return (
     <Link
       href={href}
-      className={`rounded-full border px-4 py-2 text-[13px] ${
+      className={`shrink-0 rounded-full border px-4 py-2 text-[13px] whitespace-nowrap ${
         ativa ? "border-marca bg-marca text-white" : "border-borda bg-white hover:bg-fundo"
       }`}
     >

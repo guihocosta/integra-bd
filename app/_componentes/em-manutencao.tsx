@@ -13,10 +13,9 @@ interface Props {
  * Tela mostrada quando uma página não consegue carregar. Na prática, quase sempre é o banco
  * fora do ar ou sem vagas de conexão: a tela tenta de novo sozinha a cada 30 segundos.
  */
-export function EmManutencao({ error, retry }: Props) {
+export function EmManutencao({ retry }: Props) {
   const [segundos, setSegundos] = useState(INTERVALO);
   const [tentando, iniciar] = useTransition();
-  const codigo = error instanceof Error && "digest" in error ? String(error.digest) : null;
 
   const tentar = useCallback(() => {
     setSegundos(INTERVALO);
@@ -38,20 +37,20 @@ export function EmManutencao({ error, retry }: Props) {
 
   return (
     <div className="flex min-h-[60vh] items-center justify-center py-10">
-      <div className="w-full max-w-md rounded-2xl border border-borda bg-white px-8 py-10 text-center shadow-sm">
+      <div className="w-full max-w-md rounded-2xl border border-borda bg-white px-6 py-8 text-center shadow-sm sm:px-8 sm:py-10">
         <Ilustracao />
         <p className="mt-6 text-xs font-semibold tracking-wider text-marca uppercase">Integra</p>
         <h1 className="mt-1 text-2xl font-bold">Voltamos em instantes</h1>
         <p className="mx-auto mt-3 max-w-sm text-[13px] leading-relaxed text-suave">
-          O sistema está passando por uma instabilidade e não conseguiu falar com o banco de dados. Suas atividades e
-          comprovantes estão salvos e nada foi perdido.
+          O sistema está passando por uma instabilidade momentânea. Suas atividades e comprovantes estão salvos e nada
+          foi perdido.
         </p>
 
         <button
           type="button"
           onClick={tentar}
           disabled={tentando}
-          className="mt-7 inline-flex items-center gap-2 rounded-lg bg-marca px-5 py-3 text-[13px] font-medium text-white hover:bg-marca-escura disabled:opacity-60"
+          className="mt-7 inline-flex w-full items-center justify-center sm:w-auto gap-2 rounded-lg bg-marca px-5 py-3 text-[13px] font-medium text-white hover:bg-marca-escura disabled:opacity-60"
         >
           <svg
             width="15"
@@ -70,7 +69,7 @@ export function EmManutencao({ error, retry }: Props) {
         </button>
 
         <p className="mt-3 text-[11px] text-suave" aria-live="polite">
-          {tentando ? "Reconectando ao banco…" : `Nova tentativa automática em ${Math.max(segundos, 0)} s`}
+          {tentando ? "Reconectando…" : `Nova tentativa automática em ${Math.max(segundos, 0)} s`}
         </p>
 
         <div className="mx-auto mt-6 h-1 w-40 overflow-hidden rounded-full bg-fundo">
@@ -80,7 +79,6 @@ export function EmManutencao({ error, retry }: Props) {
           />
         </div>
 
-        {codigo && <p className="mt-6 text-[10px] text-suave/70">Código para suporte: {codigo}</p>}
       </div>
     </div>
   );
